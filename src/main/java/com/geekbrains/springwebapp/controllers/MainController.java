@@ -27,7 +27,7 @@ public class MainController {
 
     @GetMapping("/shop")
     public String shopPage(Model model) {
-        List<Product> allProducts=productService.getAllProducts();
+        List<Product> allProducts = productService.getAllProducts();
         model.addAttribute("products", allProducts);
         return "shop";
     }
@@ -37,5 +37,11 @@ public class MainController {
         Product selectedProduct = productService.getProductById(id);
         model.addAttribute("selectedProduct", selectedProduct);
         return "details";
+    }
+
+    @GetMapping("/products/delete/{id}")
+    public String deleteProductById(@PathVariable("id") Long id) {
+        productService.deleteProductById(id);
+        return "redirect:/shop";
     }
 }

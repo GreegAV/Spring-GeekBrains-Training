@@ -17,12 +17,16 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productRepository.getProducts();
     }
 
     public Product getProductById(Long id) {
-       return productRepository.getProducts().get(id.intValue()-1);
+        return productRepository.getProducts().get(id.intValue() - 1);
+    }
+
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
     }
 
 }

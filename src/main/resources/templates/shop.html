@@ -23,6 +23,8 @@
             <td>ID</td>
             <td>Title</td>
             <td>Price</td>
+            <td>Details</td>
+            <td>Delete</td>
         </tr>
         </thead>
         <tbody>
@@ -30,6 +32,8 @@
             <td th:text="${product.id}"></td>
             <td th:text="${product.title}"></td>
             <td th:text="${product.price}"></td>
+            <td><a th:href="@{'/details/'+${product.id}}">Details</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/products/delete/'+${product.id}}">Delete</a></td>
         </tr>
         </tbody>
     </table>
