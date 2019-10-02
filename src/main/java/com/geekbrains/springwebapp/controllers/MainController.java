@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
+
 @Controller
 public class MainController {
 
@@ -25,9 +27,8 @@ public class MainController {
 
     @GetMapping("/shop")
     public String shopPage(Model model) {
-        Product product =
-                new Product(4L, "Cocoa", 100);
-        model.addAttribute("prod", product);
+        List<Product> allProducts=productService.getAllProducts();
+        model.addAttribute("products", allProducts);
         return "shop";
     }
 

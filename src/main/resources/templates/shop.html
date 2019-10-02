@@ -16,7 +16,24 @@
 
 <div class="container">
     <h1>Shop</h1>
-    <span th:text="${prod.id}+ ' '+ ${prod.title}+ ' ' +${prod.price}"/>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Price</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product:${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.title}"></td>
+            <td th:text="${product.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
 </body>
 </html>
