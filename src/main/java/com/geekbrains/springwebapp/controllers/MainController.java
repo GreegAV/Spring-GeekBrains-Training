@@ -33,7 +33,7 @@ public class MainController {
 
     @GetMapping("/details/{id}")
     public String detailsPage(Model model, @PathVariable("id") Long id) {
-        Product selectedProduct = productService.getProducts().get(id.intValue() - 1);
+        Product selectedProduct = productService.getProductById(id);
         model.addAttribute("selectedProduct", selectedProduct);
         return "details";
     }
