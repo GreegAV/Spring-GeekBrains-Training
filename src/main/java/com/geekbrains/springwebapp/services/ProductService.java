@@ -9,8 +9,10 @@ import java.util.List;
 
 @Service
 public class ProductService {
-
     private ProductRepository productRepository;
+
+    public ProductService() {
+    }
 
     @Autowired
     public void setProductRepository(ProductRepository productRepository) {
@@ -18,11 +20,11 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.getProducts();
+        return productRepository.findAll();
     }
 
     public Product getProductById(Long id) {
-        return productRepository.getProducts().get(id.intValue() - 1);
+        return productRepository.getOne(id);
     }
 
     public void deleteProductById(Long id) {
