@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -43,5 +45,13 @@ public class MainController {
     public String deleteProductById(@PathVariable("id") Long id) {
         productService.deleteProductById(id);
         return "redirect:/shop";
+    }
+
+    @GetMapping("/data")
+    @ResponseBody
+    public String dataExample(
+            @RequestParam(value = "serial", required = false) Long serial,
+            @RequestParam(value = "number", required = false) Long number) {
+        return "S/N: " + serial + " " + number;
     }
 }
