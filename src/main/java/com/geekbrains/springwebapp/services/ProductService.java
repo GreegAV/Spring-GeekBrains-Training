@@ -24,6 +24,13 @@ public class ProductService {
         return productRepository.getOne(id);
     }
 
+    public Product getProductByTitle(String title) {
+        return productRepository.findOneByTitle(title);
+    }
+ public Product getProductByPrice(int price) {
+        return productRepository.findOneByPrice(price);
+    }
+
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
     }

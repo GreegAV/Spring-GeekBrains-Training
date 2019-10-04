@@ -41,6 +41,34 @@ public class MainController {
         return "details";
     }
 
+    @GetMapping("/title")
+    public String detailsPageByTitle(Model model, @RequestParam("title") String title) {
+        Product selectedProduct = productService.getProductByTitle(title);
+        model.addAttribute("selectedProduct", selectedProduct);
+        return "details";
+    }
+
+    @GetMapping("/param")
+    public String detailsPageByParameter(Model model, @RequestParam("title") String title, @RequestParam("price") int price) {
+        Product selectedProduct = null;
+        if (title != null) {
+            selectedProduct = productService.getProductByTitle(title);
+        }
+        if (price != 0) {
+            selectedProduct = productService.getProductByPrice(price);
+        }
+
+        model.addAttribute("selectedProduct", selectedProduct);
+        return "details";
+    }
+
+    @GetMapping("/price")
+    public String detailsPageByPrice(Model model, @RequestParam("price") int price) {
+        Product selectedProduct = productService.getProductByPrice(price);
+        model.addAttribute("selectedProduct", selectedProduct);
+        return "details";
+    }
+
     @GetMapping("/products/delete/{id}")
     public String deleteProductById(@PathVariable("id") Long id) {
         productService.deleteProductById(id);
